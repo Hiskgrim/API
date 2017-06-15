@@ -343,12 +343,12 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /ciudad/:
+  /componente_resolucion/:
     get:
       tags:
-      - ciudad
-      description: get Ciudad
-      operationId: CiudadController.Get All
+      - componente_resolucion
+      description: get ComponenteResolucion
+      operationId: ComponenteResolucionController.Get All
       parameters:
       - in: query
         name: query
@@ -378,31 +378,31 @@ paths:
       responses:
         "200":
           schema:
-            $ref: '#/definitions/Ciudad'
+            $ref: '#/definitions/ComponenteResolucion'
         "403": {}
     post:
       tags:
-      - ciudad
-      description: create Ciudad
-      operationId: CiudadController.Post
+      - componente_resolucion
+      description: create ComponenteResolucion
+      operationId: ComponenteResolucionController.Post
       parameters:
       - in: body
         name: body
-        description: body for Ciudad content
+        description: body for ComponenteResolucion content
         required: true
         schema:
-          $ref: '#/definitions/Ciudad'
+          $ref: '#/definitions/ComponenteResolucion'
       responses:
         "201":
-          description: '{int} models.Ciudad'
+          description: '{int} models.ComponenteResolucion'
         "403":
           description: body is empty
-  /ciudad/{id}:
+  /componente_resolucion/{id}:
     get:
       tags:
-      - ciudad
-      description: get Ciudad by id
-      operationId: CiudadController.Get One
+      - componente_resolucion
+      description: get ComponenteResolucion by id
+      operationId: ComponenteResolucionController.Get One
       parameters:
       - in: path
         name: id
@@ -412,14 +412,14 @@ paths:
       responses:
         "200":
           schema:
-            $ref: '#/definitions/Ciudad'
+            $ref: '#/definitions/ComponenteResolucion'
         "403":
           description: :id is empty
     put:
       tags:
-      - ciudad
-      description: update the Ciudad
-      operationId: CiudadController.Put
+      - componente_resolucion
+      description: update the ComponenteResolucion
+      operationId: ComponenteResolucionController.Put
       parameters:
       - in: path
         name: id
@@ -428,21 +428,21 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for Ciudad content
+        description: body for ComponenteResolucion content
         required: true
         schema:
-          $ref: '#/definitions/Ciudad'
+          $ref: '#/definitions/ComponenteResolucion'
       responses:
         "200":
           schema:
-            $ref: '#/definitions/Ciudad'
+            $ref: '#/definitions/ComponenteResolucion'
         "403":
           description: :id is not int
     delete:
       tags:
-      - ciudad
-      description: delete the Ciudad
-      operationId: CiudadController.Delete
+      - componente_resolucion
+      description: delete the ComponenteResolucion
+      operationId: ComponenteResolucionController.Delete
       parameters:
       - in: path
         name: id
@@ -554,117 +554,6 @@ paths:
       - contrato
       description: delete the Contrato
       operationId: ContratoController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /contrato_docente/:
-    get:
-      tags:
-      - contrato_docente
-      description: get ContratoDocente
-      operationId: ContratoDocenteController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/ContratoDocente'
-        "403": {}
-    post:
-      tags:
-      - contrato_docente
-      description: create ContratoDocente
-      operationId: ContratoDocenteController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for ContratoDocente content
-        required: true
-        schema:
-          $ref: '#/definitions/ContratoDocente'
-      responses:
-        "201":
-          description: '{int} models.ContratoDocente'
-        "403":
-          description: body is empty
-  /contrato_docente/{id}:
-    get:
-      tags:
-      - contrato_docente
-      description: get ContratoDocente by id
-      operationId: ContratoDocenteController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/ContratoDocente'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - contrato_docente
-      description: update the ContratoDocente
-      operationId: ContratoDocenteController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for ContratoDocente content
-        required: true
-        schema:
-          $ref: '#/definitions/ContratoDocente'
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/ContratoDocente'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - contrato_docente
-      description: delete the ContratoDocente
-      operationId: ContratoDocenteController.Delete
       parameters:
       - in: path
         name: id
@@ -998,117 +887,6 @@ paths:
       - dedicacion
       description: delete the Dedicacion
       operationId: DedicacionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /dedicacion_persona/:
-    get:
-      tags:
-      - dedicacion_persona
-      description: get DedicacionPersona
-      operationId: DedicacionPersonaController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/DedicacionPersona'
-        "403": {}
-    post:
-      tags:
-      - dedicacion_persona
-      description: create DedicacionPersona
-      operationId: DedicacionPersonaController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for DedicacionPersona content
-        required: true
-        schema:
-          $ref: '#/definitions/DedicacionPersona'
-      responses:
-        "201":
-          description: '{int} models.DedicacionPersona'
-        "403":
-          description: body is empty
-  /dedicacion_persona/{id}:
-    get:
-      tags:
-      - dedicacion_persona
-      description: get DedicacionPersona by id
-      operationId: DedicacionPersonaController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/DedicacionPersona'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - dedicacion_persona
-      description: update the DedicacionPersona
-      operationId: DedicacionPersonaController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for DedicacionPersona content
-        required: true
-        schema:
-          $ref: '#/definitions/DedicacionPersona'
-      responses:
-        "200":
-          schema:
-            $ref: '#/definitions/DedicacionPersona'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - dedicacion_persona
-      description: delete the DedicacionPersona
-      operationId: DedicacionPersonaController.Delete
       parameters:
       - in: path
         name: id
@@ -2563,6 +2341,117 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /resolucion_vinculacion_docente/:
+    get:
+      tags:
+      - resolucion_vinculacion_docente
+      description: get ResolucionVinculacionDocente
+      operationId: ResolucionVinculacionDocenteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/ResolucionVinculacionDocente'
+        "403": {}
+    post:
+      tags:
+      - resolucion_vinculacion_docente
+      description: create ResolucionVinculacionDocente
+      operationId: ResolucionVinculacionDocenteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ResolucionVinculacionDocente content
+        required: true
+        schema:
+          $ref: '#/definitions/ResolucionVinculacionDocente'
+      responses:
+        "201":
+          description: '{int} models.ResolucionVinculacionDocente'
+        "403":
+          description: body is empty
+  /resolucion_vinculacion_docente/{id}:
+    get:
+      tags:
+      - resolucion_vinculacion_docente
+      description: get ResolucionVinculacionDocente by id
+      operationId: ResolucionVinculacionDocenteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/ResolucionVinculacionDocente'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - resolucion_vinculacion_docente
+      description: update the ResolucionVinculacionDocente
+      operationId: ResolucionVinculacionDocenteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ResolucionVinculacionDocente content
+        required: true
+        schema:
+          $ref: '#/definitions/ResolucionVinculacionDocente'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/ResolucionVinculacionDocente'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - resolucion_vinculacion_docente
+      description: delete the ResolucionVinculacionDocente
+      operationId: ResolucionVinculacionDocenteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
   /snies_nucleo_basico/:
     get:
       tags:
@@ -3118,6 +3007,117 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /vinculacion_docente/:
+    get:
+      tags:
+      - vinculacion_docente
+      description: get VinculacionDocente
+      operationId: VinculacionDocenteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/VinculacionDocente'
+        "403": {}
+    post:
+      tags:
+      - vinculacion_docente
+      description: create VinculacionDocente
+      operationId: VinculacionDocenteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for VinculacionDocente content
+        required: true
+        schema:
+          $ref: '#/definitions/VinculacionDocente'
+      responses:
+        "201":
+          description: '{int} models.VinculacionDocente'
+        "403":
+          description: body is empty
+  /vinculacion_docente/{id}:
+    get:
+      tags:
+      - vinculacion_docente
+      description: get VinculacionDocente by id
+      operationId: VinculacionDocenteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/VinculacionDocente'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - vinculacion_docente
+      description: update the VinculacionDocente
+      operationId: VinculacionDocenteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for VinculacionDocente content
+        required: true
+        schema:
+          $ref: '#/definitions/VinculacionDocente'
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/VinculacionDocente'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - vinculacion_docente
+      description: delete the VinculacionDocente
+      operationId: VinculacionDocenteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
 definitions:
   Arl:
     title: Arl
@@ -3209,36 +3209,22 @@ definitions:
       Telefono:
         type: number
         format: double
-  Ciudad:
-    title: Ciudad
+  ComponenteResolucion:
+    title: ComponenteResolucion
     type: object
     properties:
-      AbPais:
-        type: string
-      Abreviatura:
-        type: string
-      Departamento:
-        type: string
-      Descripcion:
-        type: string
-      Estado:
-        type: string
+      ComponentePadre:
+        type: integer
+        format: int64
       Id:
         type: integer
         format: int64
-      IdDepartamento:
-        $ref: '#/definitions/Departamento'
-      Latitud:
-        type: number
-        format: double
-      Longitud:
-        type: number
-        format: double
-      Nombre:
+      ResolucionId:
+        $ref: '#/definitions/Resolucion'
+      Texto:
         type: string
-      Poblacion:
-        type: integer
-        format: int64
+      TipoComponente:
+        type: string
   Contrato:
     title: Contrato
     type: object
@@ -3261,33 +3247,6 @@ definitions:
         type: integer
         format: int64
       VigenciaConvenio:
-        type: integer
-        format: int64
-  ContratoDocente:
-    title: ContratoDocente
-    type: object
-    properties:
-      Id:
-        type: integer
-        format: int64
-      IdPersona:
-        $ref: '#/definitions/InformacionPersonaNatural'
-      IdProyectoCurricular:
-        type: integer
-        format: int64
-      IdPuntoSalarial:
-        $ref: '#/definitions/PuntoSalarial'
-      IdResolucion:
-        $ref: '#/definitions/Resolucion'
-      NumeroContrato:
-        type: string
-      NumeroHorasSemanales:
-        type: integer
-        format: int64
-      NumeroSemanas:
-        type: integer
-        format: int64
-      Vigencia:
         type: integer
         format: int64
   ContratoEstado:
@@ -3338,7 +3297,8 @@ definitions:
       FormaPago:
         $ref: '#/definitions/Parametros'
       Id:
-        type: string
+        type: integer
+        format: int64
       Justificacion:
         type: string
       LugarEjecucion:
@@ -3423,29 +3383,12 @@ definitions:
     title: Dedicacion
     type: object
     properties:
-      Abreviatura:
-        type: string
       Descripcion:
         type: string
       Id:
         type: integer
         format: int64
       NombreDedicacion:
-        type: string
-  DedicacionPersona:
-    title: DedicacionPersona
-    type: object
-    properties:
-      FechaRegistro:
-        $ref: '#/definitions/&{time Time}'
-      Id:
-        type: integer
-        format: int64
-      IdDedicacion:
-        $ref: '#/definitions/Dedicacion'
-      IdPersonaNatural:
-        $ref: '#/definitions/InformacionPersonaNatural'
-      Observacion:
         type: string
   Departamento:
     title: Departamento
@@ -3523,6 +3466,8 @@ definitions:
     title: EscalafonPersona
     type: object
     properties:
+      Estado:
+        type: boolean
       FechaRegistro:
         $ref: '#/definitions/&{time Time}'
       Id:
@@ -3632,8 +3577,7 @@ definitions:
       IdNucleoBasico:
         $ref: '#/definitions/SniesNucleoBasico'
       IdPaisNacimiento:
-        type: number
-        format: double
+        $ref: '#/definitions/Pais'
       InteresViviendaAfc:
         type: number
         format: double
@@ -3766,7 +3710,7 @@ definitions:
     title: PuntoSalarial
     type: object
     properties:
-      Comentarios:
+      Decreto:
         type: string
       FechaRegistro:
         $ref: '#/definitions/&{time Time}'
@@ -3783,6 +3727,10 @@ definitions:
     title: Resolucion
     type: object
     properties:
+      ConsideracionResolucion:
+        type: string
+      Estado:
+        type: boolean
       FechaResolucion:
         $ref: '#/definitions/int16'
       Id:
@@ -3796,9 +3744,25 @@ definitions:
       NumeroResolucion:
         type: integer
         format: int64
+      PreambuloResolucion:
+        type: string
       Vigencia:
         type: integer
         format: int64
+  ResolucionVinculacionDocente:
+    title: ResolucionVinculacionDocente
+    type: object
+    properties:
+      Dedicacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      IdFacultad:
+        type: integer
+        format: int64
+      NivelAcademico:
+        type: string
   SniesNucleoBasico:
     title: SniesNucleoBasico
     type: object
@@ -3880,90 +3844,123 @@ definitions:
         format: int64
       Nombre:
         type: string
+  VinculacionDocente:
+    title: VinculacionDocente
+    type: object
+    properties:
+      Estado:
+        type: boolean
+      Id:
+        type: integer
+        format: int64
+      IdDedicacion:
+        $ref: '#/definitions/Dedicacion'
+      IdPersona:
+        $ref: '#/definitions/InformacionPersonaNatural'
+      IdProyectoCurricular:
+        $ref: '#/definitions/int16'
+      IdPuntoSalarial:
+        $ref: '#/definitions/PuntoSalarial'
+      IdResolucion:
+        $ref: '#/definitions/Resolucion'
+      IdSalarioMinimo:
+        type: integer
+        format: int64
+      NumeroContrato:
+        type: string
+      NumeroHorasSemanales:
+        type: integer
+        format: int64
+      NumeroSemanas:
+        type: integer
+        format: int64
+      Vigencia:
+        type: integer
+        format: int64
   int16:
     type: object
 tags:
-- name: parametro_estandar
-  description: |
-    ParametroEstandarController oprations for ParametroEstandar
-- name: contrato_docente
-  description: |
-    ContratoDocenteController oprations for ContratoDocente
-- name: dedicacion
-  description: |
-    DedicacionController oprations for Dedicacion
-- name: unidad_ejecutora
-  description: |
-    UnidadEjecutoraController oprations for UnidadEjecutora
-- name: pais
-  description: |
-    PaisController oprations for Pais
-- name: punto_salarial
-  description: |
-    PuntoSalarialController oprations for PuntoSalarial
-- name: caja_compensacion
-  description: |
-    CajaCompensacionController oprations for CajaCompensacion
-- name: eps
-  description: |
-    EpsController oprations for Eps
-- name: departamento
-  description: |
-    DepartamentoController oprations for Departamento
-- name: fondo_pension
-  description: |
-    FondoPensionController oprations for FondoPension
-- name: escalafon
-  description: |
-    EscalafonController oprations for Escalafon
-- name: arl
-  description: |
-    ArlController oprations for Arl
-- name: snies_nucleo_basico
-  description: |
-    SniesNucleoBasicoController oprations for SniesNucleoBasico
-- name: tipo_resolucion
-  description: |
-    TipoResolucionController oprations for TipoResolucion
-- name: ciudad
-  description: |
-    CiudadController oprations for Ciudad
-- name: banco
-  description: |
-    BancoController oprations for Banco
-- name: contrato_estado
-  description: |
-    ContratoEstadoController oprations for ContratoEstado
-- name: lugar_ejecucion
-  description: |
-    LugarEjecucionController oprations for LugarEjecucion
-- name: parametro_entidad
-  description: |
-    ParametroEntidadController oprations for ParametroEntidad
-- name: parametros
-  description: |
-    ParametrosController oprations for Parametros
-- name: escalafon_persona
-  description: |
-    EscalafonPersonaController oprations for EscalafonPersona
-- name: supervisor_contrato
-  description: |
-    SupervisorContratoController oprations for SupervisorContrato
-- name: dedicacion_persona
-  description: |
-    DedicacionPersonaController oprations for DedicacionPersona
 - name: informacion_persona_natural
   description: |
     InformacionPersonaNaturalController oprations for InformacionPersonaNatural
+- name: dedicacion
+  description: |
+    DedicacionController oprations for Dedicacion
+- name: arl
+  description: |
+    ArlController oprations for Arl
+- name: tipo_resolucion
+  description: |
+    TipoResolucionController oprations for TipoResolucion
+- name: escalafon_persona
+  description: |
+    EscalafonPersonaController oprations for EscalafonPersona
+- name: fondo_pension
+  description: |
+    FondoPensionController oprations for FondoPension
+- name: parametro_entidad
+  description: |
+    ParametroEntidadController oprations for ParametroEntidad
+- name: banco
+  description: |
+    BancoController oprations for Banco
+- name: parametro_estandar
+  description: |
+    ParametroEstandarController oprations for ParametroEstandar
+- name: componente_resolucion
+  description: |
+    ComponenteResolucionController oprations for ComponenteResolucion
+- name: pais
+  description: |
+    PaisController oprations for Pais
+- name: departamento
+  description: |
+    DepartamentoController oprations for Departamento
+- name: resolucion_vinculacion_docente
+  description: |
+    ResolucionVinculacionDocenteController oprations for ResolucionVinculacionDocente
+- name: vinculacion_docente
+  description: |
+    VinculacionDocenteController oprations for VinculacionDocente
+- name: caja_compensacion
+  description: |
+    CajaCompensacionController oprations for CajaCompensacion
+- name: punto_salarial
+  description: |
+    PuntoSalarialController oprations for PuntoSalarial
+- name: escalafon
+  description: |
+    EscalafonController oprations for Escalafon
 - name: resolucion
   description: |
     ResolucionController oprations for Resolucion
-- name: tipo_contrato
+- name: lugar_ejecucion
   description: |
-    TipoContratoController oprations for TipoContrato
+    LugarEjecucionController oprations for LugarEjecucion
+- name: eps
+  description: |
+    EpsController oprations for Eps
 - name: contrato
   description: |
     ContratoController oprations for Contrato
+- name: contrato_estado
+  description: |
+    ContratoEstadoController oprations for ContratoEstado
 - name: contrato_general
   description: |
-    ContratoGeneralController operations for ContratoGeneral
+    ContratoGeneralController oprations for ContratoGeneral
+- name: unidad_ejecutora
+  description: |
+    UnidadEjecutoraController oprations for UnidadEjecutora
+- name: supervisor_contrato
+  description: |
+    SupervisorContratoController oprations for SupervisorContrato
+- name: tipo_contrato
+  description: |
+    TipoContratoController oprations for TipoContrato
+- name: parametros
+  description: |
+    ParametrosController oprations for Parametros
+- name: snies_nucleo_basico
+  description: |
+    SniesNucleoBasicoController oprations for SniesNucleoBasico

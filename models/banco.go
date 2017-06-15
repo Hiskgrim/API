@@ -10,14 +10,14 @@ import (
 )
 
 type Banco struct {
-	Id                     int     `orm:"column(id_codigo);pk"`
-	NombreBanco            string  `orm:"column(nombre_banco)"`
-	DenominacionBanco      string  `orm:"column(denominacion_banco);null"`
-	Descripcion            string  `orm:"column(descripcion);null"`
-	Nit                    string  `orm:"column(nit)"`
-	CodigoSuperintendencia float64 `orm:"column(codigo_superintendencia)"`
-	CodigoAch              float64 `orm:"column(codigo_ach)"`
 	EstadoActivo           bool    `orm:"column(estado_activo)"`
+	CodigoAch              float64 `orm:"column(codigo_ach)"`
+	CodigoSuperintendencia float64 `orm:"column(codigo_superintendencia)"`
+	Nit                    string  `orm:"column(nit)"`
+	Descripcion            string  `orm:"column(descripcion);null"`
+	DenominacionBanco      string  `orm:"column(denominacion_banco);null"`
+	NombreBanco            string  `orm:"column(nombre_banco)"`
+	Id                     int     `orm:"column(id_codigo);pk"`
 }
 
 func (t *Banco) TableName() string {

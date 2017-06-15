@@ -10,10 +10,10 @@ import (
 )
 
 type UnidadEjecutora struct {
-	Id          int    `orm:"column(id);pk"`
-	Nombre      string `orm:"column(nombre);null"`
-	Descripcion string `orm:"column(descripcion);null"`
 	Entidad     int    `orm:"column(entidad)"`
+	Descripcion string `orm:"column(descripcion);null"`
+	Nombre      string `orm:"column(nombre);null"`
+	Id          int    `orm:"column(id);pk"`
 }
 
 func (t *UnidadEjecutora) TableName() string {

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"cdve_api_crud/models"
+	"cdve_crud_api/models"
 	"encoding/json"
 	"errors"
 	"strconv"

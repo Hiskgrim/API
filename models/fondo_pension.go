@@ -10,17 +10,17 @@ import (
 )
 
 type FondoPension struct {
-	Id               int     `orm:"column(nit);pk"`
-	IdUbicacion      float64 `orm:"column(id_ubicacion);null"`
-	Nombre           string  `orm:"column(nombre)"`
-	Direccion        string  `orm:"column(direccion)"`
-	Telefono         float64 `orm:"column(telefono)"`
-	ExtTelefono      float64 `orm:"column(ext_telefono);null"`
-	Fax              float64 `orm:"column(fax);null"`
-	ExtFax           float64 `orm:"column(ext_fax);null"`
-	NomRepresentante string  `orm:"column(nom_representante);null"`
-	Email            string  `orm:"column(email)"`
 	Estado           string  `orm:"column(estado)"`
+	Email            string  `orm:"column(email)"`
+	NomRepresentante string  `orm:"column(nom_representante);null"`
+	ExtFax           float64 `orm:"column(ext_fax);null"`
+	Fax              float64 `orm:"column(fax);null"`
+	ExtTelefono      float64 `orm:"column(ext_telefono);null"`
+	Telefono         float64 `orm:"column(telefono)"`
+	Direccion        string  `orm:"column(direccion)"`
+	Nombre           string  `orm:"column(nombre)"`
+	IdUbicacion      float64 `orm:"column(id_ubicacion);null"`
+	Id               int     `orm:"column(nit);pk"`
 }
 
 func (t *FondoPension) TableName() string {

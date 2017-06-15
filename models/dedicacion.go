@@ -10,10 +10,9 @@ import (
 )
 
 type Dedicacion struct {
-	Id               int    `orm:"column(id_dedicacion);pk"`
-	NombreDedicacion string `orm:"column(nombre_dedicacion)"`
 	Descripcion      string `orm:"column(descripcion);null"`
-	Abreviatura      string `orm:"column(abreviatura)"`
+	NombreDedicacion string `orm:"column(nombre_dedicacion)"`
+	Id               int    `orm:"column(id_dedicacion);pk"`
 }
 
 func (t *Dedicacion) TableName() string {

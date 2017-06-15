@@ -11,11 +11,12 @@ import (
 )
 
 type EscalafonPersona struct {
-	Id               int                        `orm:"column(id_escalafon_persona);pk"`
-	IdPersonaNatural *InformacionPersonaNatural `orm:"column(id_persona_natural);rel(fk)"`
-	IdEscalafon      *Escalafon                 `orm:"column(id_escalafon);rel(fk)"`
-	FechaRegistro    time.Time                  `orm:"column(fecha_registro);type(date)"`
+	Estado           bool                       `orm:"column(estado)"`
 	Observacion      string                     `orm:"column(observacion);null"`
+	FechaRegistro    time.Time                  `orm:"column(fecha_registro);type(date)"`
+	IdEscalafon      *Escalafon                 `orm:"column(id_escalafon);rel(fk)"`
+	IdPersonaNatural *InformacionPersonaNatural `orm:"column(id_persona_natural);rel(fk)"`
+	Id               int                        `orm:"column(id_escalafon_persona);pk"`
 }
 
 func (t *EscalafonPersona) TableName() string {

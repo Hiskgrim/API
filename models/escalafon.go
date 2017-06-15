@@ -10,9 +10,9 @@ import (
 )
 
 type Escalafon struct {
-	Id              int    `orm:"column(id_escalafon);pk"`
-	NombreEscalafon string `orm:"column(nombre_escalafon)"`
 	Descripcion     string `orm:"column(descripcion);null"`
+	NombreEscalafon string `orm:"column(nombre_escalafon)"`
+	Id              int    `orm:"column(id_escalafon);pk"`
 }
 
 func (t *Escalafon) TableName() string {

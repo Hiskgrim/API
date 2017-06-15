@@ -10,9 +10,9 @@ import (
 )
 
 type TipoResolucion struct {
-	Id                   int    `orm:"column(id_tipo_resolucion);pk"`
-	NombreTipoResolucion string `orm:"column(nombre_tipo_resolucion)"`
 	Descripcion          string `orm:"column(descripcion);null"`
+	NombreTipoResolucion string `orm:"column(nombre_tipo_resolucion)"`
+	Id                   int    `orm:"column(id_tipo_resolucion);pk"`
 }
 
 func (t *TipoResolucion) TableName() string {

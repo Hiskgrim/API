@@ -11,12 +11,12 @@ import (
 )
 
 type ContratoEstado struct {
-	NumeroContrato string    `orm:"column(numero_contrato);null"`
-	Vigencia       int       `orm:"column(vigencia);null"`
-	FechaRegistro  time.Time `orm:"column(fecha_registro);type(timestamp without time zone);null"`
-	Id             int       `orm:"column(id);pk"`
-	Estado         int       `orm:"column(estado);null"`
 	Usuario        string    `orm:"column(usuario);null"`
+	Estado         int       `orm:"column(estado);null"`
+	Id             int       `orm:"column(id);pk"`
+	FechaRegistro  time.Time `orm:"column(fecha_registro);type(timestamp without time zone);null"`
+	Vigencia       int       `orm:"column(vigencia);null"`
+	NumeroContrato string    `orm:"column(numero_contrato);null"`
 }
 
 func (t *ContratoEstado) TableName() string {

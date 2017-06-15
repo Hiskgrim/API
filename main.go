@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "cdve_api_crud/routers"
+	_ "cdve_crud_api/routers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

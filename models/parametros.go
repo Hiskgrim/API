@@ -11,12 +11,12 @@ import (
 )
 
 type Parametros struct {
-	Id                int       `orm:"column(id_parametro);pk"`
-	Descripcion       string    `orm:"column(descripcion)"`
-	CodigoContraloria string    `orm:"column(codigo_contraloria);null"`
-	RelParametro      int       `orm:"column(rel_parametro)"`
-	EstadoRegistro    bool      `orm:"column(estado_registro)"`
 	FechaRegistro     time.Time `orm:"column(fecha_registro);type(date)"`
+	EstadoRegistro    bool      `orm:"column(estado_registro)"`
+	RelParametro      int       `orm:"column(rel_parametro)"`
+	CodigoContraloria string    `orm:"column(codigo_contraloria);null"`
+	Descripcion       string    `orm:"column(descripcion)"`
+	Id                int       `orm:"column(id_parametro);pk"`
 }
 
 func (t *Parametros) TableName() string {

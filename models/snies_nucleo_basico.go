@@ -10,11 +10,11 @@ import (
 )
 
 type SniesNucleoBasico struct {
-	IdArea      float64 `orm:"column(id_area)"`
-	Id          int     `orm:"column(id_nucleo);pk"`
-	Nombre      string  `orm:"column(nombre)"`
-	Descripcion string  `orm:"column(descripcion);null"`
 	Estado      string  `orm:"column(estado)"`
+	Descripcion string  `orm:"column(descripcion);null"`
+	Nombre      string  `orm:"column(nombre)"`
+	Id          int     `orm:"column(id_nucleo);pk"`
+	IdArea      float64 `orm:"column(id_area)"`
 }
 
 func (t *SniesNucleoBasico) TableName() string {

@@ -1,15 +1,16 @@
 package controllers
 
 import (
+	"cdve_crud_api/models"
 	"encoding/json"
 	"errors"
+	"strconv"
 	"strings"
-	"cdve_api_crud/models"
 
 	"github.com/astaxie/beego"
 )
 
-// ContratoGeneralController operations for ContratoGeneral
+// ContratoGeneralController oprations for ContratoGeneral
 type ContratoGeneralController struct {
 	beego.Controller
 }
@@ -21,6 +22,23 @@ func (c *ContratoGeneralController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
+	c.Mapping("InsertarContratos", c.InsertarContratos)
+
+}
+
+func (c *ContratoGeneralController) InsertarContratos() {
+	var v []models.ContratoGeneral
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := models.AddConjuntoContratos(v); err == nil {
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = v
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
+	c.ServeJSON()
 }
 
 // Post ...
@@ -54,7 +72,8 @@ func (c *ContratoGeneralController) Post() {
 // @router /:id [get]
 func (c *ContratoGeneralController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
-	v, err := models.GetContratoGeneralById(idStr)
+	id, _ := strconv.Atoi(idStr)
+	v, err := models.GetContratoGeneralById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -136,7 +155,8 @@ func (c *ContratoGeneralController) GetAll() {
 // @router /:id [put]
 func (c *ContratoGeneralController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
-	v := models.ContratoGeneral{Id:idStr}
+	id, _ := strconv.Atoi(idStr)
+	v := models.ContratoGeneral{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateContratoGeneralById(&v); err == nil {
 			c.Data["json"] = "OK"
@@ -158,7 +178,8 @@ func (c *ContratoGeneralController) Put() {
 // @router /:id [delete]
 func (c *ContratoGeneralController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
-	if err := models.DeleteContratoGeneral(idStr); err == nil {
+	id, _ := strconv.Atoi(idStr)
+	if err := models.DeleteContratoGeneral(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

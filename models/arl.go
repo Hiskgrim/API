@@ -10,18 +10,18 @@ import (
 )
 
 type Arl struct {
-	Id                       int     `orm:"column(nit);pk"`
-	IdUbicacion              float64 `orm:"column(id_ubicacion);null"`
-	Nombre                   string  `orm:"column(nombre)"`
-	Direccion                string  `orm:"column(direccion)"`
-	Telefono                 float64 `orm:"column(telefono)"`
-	ExtencionTelefono        float64 `orm:"column(extencion_telefono);null"`
-	Fax                      float64 `orm:"column(fax);null"`
-	ExtencionFax             float64 `orm:"column(extencion_fax);null"`
-	NombreRepresentanteLegal string  `orm:"column(nombre_representante_legal);null"`
-	Email                    string  `orm:"column(email)"`
-	Estado                   string  `orm:"column(estado)"`
 	Lugar                    float64 `orm:"column(lugar);null"`
+	Estado                   string  `orm:"column(estado)"`
+	Email                    string  `orm:"column(email)"`
+	NombreRepresentanteLegal string  `orm:"column(nombre_representante_legal);null"`
+	ExtencionFax             float64 `orm:"column(extencion_fax);null"`
+	Fax                      float64 `orm:"column(fax);null"`
+	ExtencionTelefono        float64 `orm:"column(extencion_telefono);null"`
+	Telefono                 float64 `orm:"column(telefono)"`
+	Direccion                string  `orm:"column(direccion)"`
+	Nombre                   string  `orm:"column(nombre)"`
+	IdUbicacion              float64 `orm:"column(id_ubicacion);null"`
+	Id                       int     `orm:"column(nit);pk"`
 }
 
 func (t *Arl) TableName() string {

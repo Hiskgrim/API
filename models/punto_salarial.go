@@ -11,11 +11,11 @@ import (
 )
 
 type PuntoSalarial struct {
-	Id            int       `orm:"column(id);pk"`
-	Vigencia      int       `orm:"column(vigencia)"`
-	FechaRegistro time.Time `orm:"column(fecha_registro);type(date)"`
+	Decreto       string    `orm:"column(decreto);null"`
 	ValorPunto    float64   `orm:"column(valor_punto)"`
-	Comentarios   string    `orm:"column(comentarios);null"`
+	FechaRegistro time.Time `orm:"column(fecha_registro);type(date)"`
+	Vigencia      int       `orm:"column(vigencia)"`
+	Id            int       `orm:"column(id);pk"`
 }
 
 func (t *PuntoSalarial) TableName() string {

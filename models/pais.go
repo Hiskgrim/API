@@ -10,15 +10,15 @@ import (
 )
 
 type Pais struct {
-	Id            int    `orm:"column(id_pais);pk"`
-	NombrePais    string `orm:"column(nombre_pais)"`
-	Abreviatura   string `orm:"column(abreviatura);null"`
-	Estado        string `orm:"column(estado)"`
-	CapitalPais   string `orm:"column(capital_pais);null"`
-	ProvinciaPais string `orm:"column(provincia_pais);null"`
-	AreaPais      int    `orm:"column(area_pais);null"`
-	PoblacionPais int    `orm:"column(poblacion_pais);null"`
 	CodigoPais    int    `orm:"column(codigo_pais);null"`
+	PoblacionPais int    `orm:"column(poblacion_pais);null"`
+	AreaPais      int    `orm:"column(area_pais);null"`
+	ProvinciaPais string `orm:"column(provincia_pais);null"`
+	CapitalPais   string `orm:"column(capital_pais);null"`
+	Estado        string `orm:"column(estado)"`
+	Abreviatura   string `orm:"column(abreviatura);null"`
+	NombrePais    string `orm:"column(nombre_pais)"`
+	Id            int    `orm:"column(id_pais);pk"`
 }
 
 func (t *Pais) TableName() string {

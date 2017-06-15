@@ -1,7 +1,7 @@
 package controllers
 
 import (
-  "cdve_api_crud/models"
+  "cdve_crud_api/models"
   "github.com/astaxie/beego"
 )
 
@@ -16,7 +16,8 @@ func (c *ContratadoController) URLMapping() {
 
 
 func (c *ContratadoController) GetAll() {
-    listaContratados := models.GetAllContratado()
+	tipoDedicacionStr := c.Ctx.Input.Param(":tipoDedicacion")
+    listaContratados := models.GetAllContratado(tipoDedicacionStr)
     c.Ctx.Output.SetStatus(201)
     c.Data["json"] = listaContratados
     c.ServeJSON()

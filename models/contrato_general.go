@@ -11,48 +11,48 @@ import (
 )
 
 type ContratoGeneral struct {
-	Id                           string              `orm:"column(numero_contrato);pk"`
-	Vigencia                     int                 `orm:"column(vigencia)"`
-	ObjetoContrato               string              `orm:"column(objeto_contrato);null"`
-	PlazoEjecucion               int                 `orm:"column(plazo_ejecucion)"`
-	FormaPago                    *Parametros         `orm:"column(forma_pago);rel(fk)"`
-	OrdenadorGasto               string              `orm:"column(ordenador_gasto);null"`
-	ClausulaRegistroPresupuestal bool                `orm:"column(clausula_registro_presupuestal);null"`
-	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
-	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
-	NumeroSolicitudNecesidad     int                 `orm:"column(numero_solicitud_necesidad)"`
-	NumeroCdp                    int                 `orm:"column(numero_cdp)"`
-	Contratista                  float64             `orm:"column(contratista)"`
-	UnidadEjecucion              *Parametros         `orm:"column(unidad_ejecucion);rel(fk)"`
-	ValorContrato                float64             `orm:"column(valor_contrato)"`
-	Justificacion                string              `orm:"column(justificacion)"`
-	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago)"`
-	Condiciones                  string              `orm:"column(condiciones)"`
-	UnidadEjecutora              *UnidadEjecutora    `orm:"column(unidad_ejecutora);rel(fk)"`
-	FechaRegistro                time.Time           `orm:"column(fecha_registro);type(date)"`
-	TipologiaContrato            int                 `orm:"column(tipologia_contrato)"`
-	TipoCompromiso               int                 `orm:"column(tipo_compromiso)"`
-	ModalidadSeleccion           int                 `orm:"column(modalidad_seleccion)"`
-	Procedimiento                int                 `orm:"column(procedimiento)"`
-	RegimenContratacion          int                 `orm:"column(regimen_contratacion)"`
-	TipoGasto                    int                 `orm:"column(tipo_gasto)"`
-	TemaGastoInversion           int                 `orm:"column(tema_gasto_inversion)"`
-	OrigenPresupueso             int                 `orm:"column(origen_presupueso)"`
-	OrigenRecursos               int                 `orm:"column(origen_recursos)"`
-	TipoMoneda                   int                 `orm:"column(tipo_moneda)"`
-	ValorContratoMe              float64             `orm:"column(valor_contrato_me);null"`
-	ValorTasaCambio              float64             `orm:"column(valor_tasa_cambio);null"`
-	TipoControl                  int                 `orm:"column(tipo_control);null"`
-	Observaciones                string              `orm:"column(observaciones);null"`
-	Supervisor                   *SupervisorContrato `orm:"column(supervisor);rel(fk)"`
-	ClaseContratista             int                 `orm:"column(clase_contratista)"`
-	Convenio                     string              `orm:"column(convenio);null"`
-	NumeroConstancia             int                 `orm:"column(numero_constancia);null"`
-	Estado                       bool                `orm:"column(estado);null"`
-	ResgistroPresupuestal        int                 `orm:"column(resgistro_presupuestal);null"`
-	TipoContrato                 *TipoContrato       `orm:"column(tipo_contrato);rel(fk)"`
+	Actividades                  *string              `orm:"column(actividades);null"`
 	LugarEjecucion               *LugarEjecucion     `orm:"column(lugar_ejecucion);rel(fk)"`
-	Actividades                  string              `orm:"column(actividades);null"`
+	TipoContrato                 *TipoContrato       `orm:"column(tipo_contrato);rel(fk)"`
+	ResgistroPresupuestal        *int                 `orm:"column(resgistro_presupuestal);null"`
+	Estado                       *bool                `orm:"column(estado);null"`
+	NumeroConstancia             *int                 `orm:"column(numero_constancia);null"`
+	Convenio                     *string              `orm:"column(convenio);null"`
+	ClaseContratista             int                 `orm:"column(clase_contratista)"`
+	Supervisor                   *SupervisorContrato `orm:"column(supervisor);rel(fk);null"`
+	Observaciones                *string              `orm:"column(observaciones);null"`
+	TipoControl                  *int                 `orm:"column(tipo_control);null"`
+	ValorTasaCambio              *float64             `orm:"column(valor_tasa_cambio);null"`
+	ValorContratoMe              *float64             `orm:"column(valor_contrato_me);null"`
+	TipoMoneda                   int                 `orm:"column(tipo_moneda)"`
+	OrigenRecursos               int                 `orm:"column(origen_recursos)"`
+	OrigenPresupueso             int                 `orm:"column(origen_presupueso)"`
+	TemaGastoInversion           int                 `orm:"column(tema_gasto_inversion)"`
+	TipoGasto                    int                 `orm:"column(tipo_gasto)"`
+	RegimenContratacion          int                 `orm:"column(regimen_contratacion)"`
+	Procedimiento                int                 `orm:"column(procedimiento)"`
+	ModalidadSeleccion           int                 `orm:"column(modalidad_seleccion)"`
+	TipoCompromiso               int                 `orm:"column(tipo_compromiso)"`
+	TipologiaContrato            int                 `orm:"column(tipologia_contrato)"`
+	FechaRegistro                time.Time           `orm:"column(fecha_registro);type(date)"`
+	UnidadEjecutora              *UnidadEjecutora    `orm:"column(unidad_ejecutora);rel(fk)"`
+	Condiciones                  string              `orm:"column(condiciones)"`
+	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago)"`
+	Justificacion                string              `orm:"column(justificacion)"`
+	ValorContrato                float64             `orm:"column(valor_contrato)"`
+	UnidadEjecucion              *Parametros         `orm:"column(unidad_ejecucion);rel(fk)"`
+	Contratista                  float64             `orm:"column(contratista)"`
+	NumeroCdp                    int                 `orm:"column(numero_cdp)"`
+	NumeroSolicitudNecesidad     int                 `orm:"column(numero_solicitud_necesidad)"`
+	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
+	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
+	ClausulaRegistroPresupuestal *bool                `orm:"column(clausula_registro_presupuestal);null"`
+	OrdenadorGasto               string              `orm:"column(ordenador_gasto);null"`
+	FormaPago                    *Parametros         `orm:"column(forma_pago);rel(fk)"`
+	PlazoEjecucion               int                 `orm:"column(plazo_ejecucion)"`
+	ObjetoContrato               string              `orm:"column(objeto_contrato);null"`
+	Vigencia                     int                 `orm:"column(vigencia)"`
+	Id                           int                 `orm:"column(numero_contrato);pk;auto"`
 }
 
 func (t *ContratoGeneral) TableName() string {
@@ -61,6 +61,20 @@ func (t *ContratoGeneral) TableName() string {
 
 func init() {
 	orm.RegisterModel(new(ContratoGeneral))
+}
+
+func AddConjuntoContratos(m []ContratoGeneral)(err error){
+	o := orm.NewOrm()
+	o.Begin()
+	for _, contrato := range m {
+	    _, err = o.Insert(&contrato)
+	    if (err != nil){
+	    	o.Rollback()
+	    	return
+	    }
+	}
+	o.Commit()
+	return
 }
 
 // AddContratoGeneral insert a new ContratoGeneral into database and returns
@@ -73,7 +87,7 @@ func AddContratoGeneral(m *ContratoGeneral) (id int64, err error) {
 
 // GetContratoGeneralById retrieves ContratoGeneral by Id. Returns error if
 // Id doesn't exist
-func GetContratoGeneralById(id string) (v *ContratoGeneral, err error) {
+func GetContratoGeneralById(id int) (v *ContratoGeneral, err error) {
 	o := orm.NewOrm()
 	v = &ContratoGeneral{Id: id}
 	if err = o.Read(v); err == nil {
@@ -92,11 +106,7 @@ func GetAllContratoGeneral(query map[string]string, fields []string, sortby []st
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
-		if strings.Contains(k, "isnull") {
-			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else {
-			qs = qs.Filter(k, v)
-		}
+		qs = qs.Filter(k, v)
 	}
 	// order by:
 	var sortFields []string
@@ -177,7 +187,7 @@ func UpdateContratoGeneralById(m *ContratoGeneral) (err error) {
 
 // DeleteContratoGeneral deletes ContratoGeneral by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteContratoGeneral(id string) (err error) {
+func DeleteContratoGeneral(id int) (err error) {
 	o := orm.NewOrm()
 	v := ContratoGeneral{Id: id}
 	// ascertain id exists in the database

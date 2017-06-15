@@ -10,10 +10,10 @@ import (
 )
 
 type TipoContrato struct {
-	Id                  int    `orm:"column(id);pk"`
-	TipoContrato        string `orm:"column(tipo_contrato);null"`
-	IdGrupoTipoContrato int    `orm:"column(id_grupo_tipo_contrato);null"`
 	Estado              bool   `orm:"column(estado);null"`
+	IdGrupoTipoContrato int    `orm:"column(id_grupo_tipo_contrato);null"`
+	TipoContrato        string `orm:"column(tipo_contrato);null"`
+	Id                  int    `orm:"column(id);pk"`
 }
 
 func (t *TipoContrato) TableName() string {

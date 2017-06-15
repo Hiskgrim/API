@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"cdve_api_crud/controllers"
+	"cdve_crud_api/controllers"
 
 	"github.com/astaxie/beego"
 )
@@ -16,15 +16,9 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		beego.NSNamespace("/parametro_estandar",
+		beego.NSNamespace("/informacion_persona_natural",
 			beego.NSInclude(
-				&controllers.ParametroEstandarController{},
-			),
-		),
-
-		beego.NSNamespace("/contrato_docente",
-			beego.NSInclude(
-				&controllers.ContratoDocenteController{},
+				&controllers.InformacionPersonaNaturalController{},
 			),
 		),
 
@@ -34,63 +28,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/unidad_ejecutora",
-			beego.NSInclude(
-				&controllers.UnidadEjecutoraController{},
-			),
-		),
-
-		beego.NSNamespace("/pais",
-			beego.NSInclude(
-				&controllers.PaisController{},
-			),
-		),
-
-		beego.NSNamespace("/punto_salarial",
-			beego.NSInclude(
-				&controllers.PuntoSalarialController{},
-			),
-		),
-
-		beego.NSNamespace("/caja_compensacion",
-			beego.NSInclude(
-				&controllers.CajaCompensacionController{},
-			),
-		),
-
-		beego.NSNamespace("/eps",
-			beego.NSInclude(
-				&controllers.EpsController{},
-			),
-		),
-
-		beego.NSNamespace("/departamento",
-			beego.NSInclude(
-				&controllers.DepartamentoController{},
-			),
-		),
-
-		beego.NSNamespace("/fondo_pension",
-			beego.NSInclude(
-				&controllers.FondoPensionController{},
-			),
-		),
-
-		beego.NSNamespace("/escalafon",
-			beego.NSInclude(
-				&controllers.EscalafonController{},
-			),
-		),
-
 		beego.NSNamespace("/arl",
 			beego.NSInclude(
 				&controllers.ArlController{},
-			),
-		),
-
-		beego.NSNamespace("/snies_nucleo_basico",
-			beego.NSInclude(
-				&controllers.SniesNucleoBasicoController{},
 			),
 		),
 
@@ -100,27 +40,15 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/ciudad",
+		beego.NSNamespace("/escalafon_persona",
 			beego.NSInclude(
-				&controllers.CiudadController{},
+				&controllers.EscalafonPersonaController{},
 			),
 		),
 
-		beego.NSNamespace("/banco",
+		beego.NSNamespace("/fondo_pension",
 			beego.NSInclude(
-				&controllers.BancoController{},
-			),
-		),
-
-		beego.NSNamespace("/contrato_estado",
-			beego.NSInclude(
-				&controllers.ContratoEstadoController{},
-			),
-		),
-
-		beego.NSNamespace("/lugar_ejecucion",
-			beego.NSInclude(
-				&controllers.LugarEjecucionController{},
+				&controllers.FondoPensionController{},
 			),
 		),
 
@@ -130,33 +58,63 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/parametros",
+		beego.NSNamespace("/banco",
 			beego.NSInclude(
-				&controllers.ParametrosController{},
+				&controllers.BancoController{},
 			),
 		),
 
-		beego.NSNamespace("/escalafon_persona",
+		beego.NSNamespace("/parametro_estandar",
 			beego.NSInclude(
-				&controllers.EscalafonPersonaController{},
+				&controllers.ParametroEstandarController{},
 			),
 		),
 
-		beego.NSNamespace("/supervisor_contrato",
+		beego.NSNamespace("/componente_resolucion",
 			beego.NSInclude(
-				&controllers.SupervisorContratoController{},
+				&controllers.ComponenteResolucionController{},
 			),
 		),
 
-		beego.NSNamespace("/dedicacion_persona",
+		beego.NSNamespace("/pais",
 			beego.NSInclude(
-				&controllers.DedicacionPersonaController{},
+				&controllers.PaisController{},
 			),
 		),
 
-		beego.NSNamespace("/informacion_persona_natural",
+		beego.NSNamespace("/departamento",
 			beego.NSInclude(
-				&controllers.InformacionPersonaNaturalController{},
+				&controllers.DepartamentoController{},
+			),
+		),
+
+		beego.NSNamespace("/resolucion_vinculacion_docente",
+			beego.NSInclude(
+				&controllers.ResolucionVinculacionDocenteController{},
+			),
+		),
+
+		beego.NSNamespace("/vinculacion_docente",
+			beego.NSInclude(
+				&controllers.VinculacionDocenteController{},
+			),
+		),
+
+		beego.NSNamespace("/caja_compensacion",
+			beego.NSInclude(
+				&controllers.CajaCompensacionController{},
+			),
+		),
+
+		beego.NSNamespace("/punto_salarial",
+			beego.NSInclude(
+				&controllers.PuntoSalarialController{},
+			),
+		),
+
+		beego.NSNamespace("/escalafon",
+			beego.NSInclude(
+				&controllers.EscalafonController{},
 			),
 		),
 
@@ -166,9 +124,15 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/tipo_contrato",
+		beego.NSNamespace("/lugar_ejecucion",
 			beego.NSInclude(
-				&controllers.TipoContratoController{},
+				&controllers.LugarEjecucionController{},
+			),
+		),
+
+		beego.NSNamespace("/eps",
+			beego.NSInclude(
+				&controllers.EpsController{},
 			),
 		),
 
@@ -178,14 +142,114 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/contrato_estado",
+			beego.NSInclude(
+				&controllers.ContratoEstadoController{},
+			),
+		),
+
 		beego.NSNamespace("/contrato_general",
 			beego.NSInclude(
 				&controllers.ContratoGeneralController{},
 			),
 		),
+
+		beego.NSNamespace("/unidad_ejecutora",
+			beego.NSInclude(
+				&controllers.UnidadEjecutoraController{},
+			),
+		),
+
+		beego.NSNamespace("/supervisor_contrato",
+			beego.NSInclude(
+				&controllers.SupervisorContratoController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_contrato",
+			beego.NSInclude(
+				&controllers.TipoContratoController{},
+			),
+		),
+
+		beego.NSNamespace("/parametros",
+			beego.NSInclude(
+				&controllers.ParametrosController{},
+			),
+		),
+
+		beego.NSNamespace("/snies_nucleo_basico",
+			beego.NSInclude(
+				&controllers.SniesNucleoBasicoController{},
+			),
+		),
+
 		beego.NSNamespace("/contratado",
 			beego.NSInclude(
 				&controllers.ContratadoController{},
+			),
+		),
+
+		beego.NSNamespace("/precontratado",
+			beego.NSInclude(
+				&controllers.PrecontratadoController{},
+			),
+		),
+
+		beego.NSNamespace("/resolucion_vinculacion",
+			beego.NSInclude(
+				&controllers.ResolucionVinculacionController{},
+			),
+		),
+
+		beego.NSNamespace("/persona_escalafon",
+			beego.NSInclude(
+				&controllers.PersonaEscalafonController{},
+			),
+		),
+
+		beego.NSNamespace("/contenido_resolucion",
+			beego.NSInclude(
+				&controllers.ResolucionCompletaController{},
+			),
+		),		
+
+		beego.NSNamespace("/dependencia",
+			beego.NSInclude(
+				&controllers.DependenciaController{},
+			),
+		),
+
+		beego.NSNamespace("/dependencia_tipo_dependencia",
+			beego.NSInclude(
+				&controllers.DependenciaTipoDependenciaController{},
+			),
+		),
+
+		beego.NSNamespace("/dependencia_padre",
+			beego.NSInclude(
+				&controllers.DependenciaPadreController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_dependencia",
+			beego.NSInclude(
+				&controllers.TipoDependenciaController{},
+			),
+		),
+		beego.NSNamespace("/facultad",
+			beego.NSInclude(
+				&controllers.FacultadController{},
+			),
+		),
+		beego.NSNamespace("/proyecto_curricular",
+			beego.NSInclude(
+				&controllers.ProyectoCurricularController{},
+			),
+		),
+		beego.NSNamespace("/ordenador_gasto",
+			beego.NSInclude(
+				&controllers.OrdenadorGastoController{},
 			),
 		),
 	)
