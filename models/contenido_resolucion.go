@@ -21,6 +21,7 @@ type Articulo struct {
 }
 
 type ResolucionCompleta struct {
+	Vinculacion				ResolucionVinculacionDocente
 	Consideracion 			string          
 	Preambulo 			    string          
 	Vigencia                int             
@@ -75,6 +76,14 @@ func UpdateResolucionCompletaById(m *ResolucionCompleta) (err error) {
 	o := orm.NewOrm()
 	v := Resolucion{Id: m.Id}
 	idResolucionStr:=strconv.Itoa(m.Id)
+	r := m.Vinculacion
+	fmt.Println(r.Id)
+	a := ResolucionVinculacionDocente{Id: r.Id}
+	if err = o.Read(&a); err == nil {
+		_, err = o.Update(&r)
+	}else{
+		return
+	}
 	if err = o.Read(&v); err == nil {
 		v.ConsideracionResolucion=m.Consideracion
 		v.PreambuloResolucion=m.Preambulo

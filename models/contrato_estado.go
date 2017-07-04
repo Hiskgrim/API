@@ -11,9 +11,9 @@ import (
 )
 
 type ContratoEstado struct {
-	Usuario        string    `orm:"column(usuario);null"`
+	Usuario        *string    `orm:"column(usuario);null"`
 	Estado         int       `orm:"column(estado);null"`
-	Id             int       `orm:"column(id);pk"`
+	Id             int       `orm:"column(id);pk;auto"`
 	FechaRegistro  time.Time `orm:"column(fecha_registro);type(timestamp without time zone);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`

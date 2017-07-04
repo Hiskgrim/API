@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"strings"
 	"time"
+	"strconv"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -32,11 +33,51 @@ func init() {
 	orm.RegisterModel(new(Resolucion))
 }
 
+func CancelarResolucion(m *Resolucion) (err error){
+	o := orm.NewOrm()
+	o.Begin()
+	v := ResolucionVinculacionDocente{Id: m.Id}
+	if err = o.Read(&v); err == nil { 
+		var vinculacion_docente []*VinculacionDocente
+		_, err:=o.QueryTable("vinculacion_docente").Filter("id_resolucion",m.Id).Filter("estado",true).All(&vinculacion_docente)
+		for _, vd := range vinculacion_docente{
+			var contratos_generales []*ContratoGeneral
+			if(vd.NumeroContrato!=nil && vd.Vigencia!=nil){
+				_, err:=o.QueryTable("contrato_general").Filter("numero_contrato",*vd.NumeroContrato).Filter("vigencia",*vd.Vigencia).All(&contratos_generales)
+				if(err == nil){
+					for _, c := range contratos_generales{
+						aux1 := strconv.Itoa(c.Id)
+				    	aux2 := c.Vigencia
+				    	e:=ContratoEstado{}
+				    	e.NumeroContrato = aux1
+				    	e.Vigencia = aux2
+				    	e.FechaRegistro=time.Now()
+				    	e.Estado=7
+				    	if _, err = o.Insert(&e); err != nil{
+				    		o.Rollback()
+				    	}
+					}
+				}
+			}
+		}
+
+		var num int64
+		if num, err = o.Update(m); err == nil {
+			fmt.Println("Number of records updated in database:", num)
+		}
+	}else{
+		o.Rollback()
+		return
+	}
+	o.Commit()
+	return
+}
+
 // AddResolucion insert a new Resolucion into database and returns
 // last inserted Id on success.
 func AddResolucion(m *Resolucion) (id int64, err error) {
 	o := orm.NewOrm()
-	m.Vigencia=2017
+	m.Vigencia, _, _=time.Now().Date()
 	m.FechaRegistro=time.Now()
 	m.Estado=true
 	m.IdTipoResolucion=&TipoResolucion{Id: 1}
@@ -50,8 +91,10 @@ func GetResolucionById(id int) (v *Resolucion, err error) {
 	o := orm.NewOrm()
 	v = &Resolucion{Id: id}
 	if err = o.Read(v); err == nil {
+		fmt.Println("si")
 		return v, nil
 	}
+	fmt.Println("si")
 	return nil, err
 }
 

@@ -230,6 +230,13 @@ func init() {
 			AllowHTTPMethods: []string{"post"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["cdve_crud_api/controllers:VinculacionDocenteController"] = append(beego.GlobalControllerRouter["cdve_crud_api/controllers:VinculacionDocenteController"],
+		beego.ControllerComments{
+			Method: "InsertarVinculaciones",
+			Router: `InsertarVinculaciones`,
+			AllowHTTPMethods: []string{"post"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["cdve_crud_api/controllers:OrdenadorGastoController"] = append(beego.GlobalControllerRouter["cdve_crud_api/controllers:OrdenadorGastoController"],
 		beego.ControllerComments{
 			Method: "Post",
@@ -263,6 +270,13 @@ func init() {
 			Method: "Delete",
 			Router: `/:id`,
 			AllowHTTPMethods: []string{"delete"},
+			Params: nil})
+
+	beego.GlobalControllerRouter["cdve_crud_api/controllers:ResolucionController"] = append(beego.GlobalControllerRouter["cdve_crud_api/controllers:ResolucionController"],
+		beego.ControllerComments{
+			Method: "CancelarResolucion",
+			Router: `CancelarResolucion/:id`,
+			AllowHTTPMethods: []string{"put"},
 			Params: nil})
 
 }

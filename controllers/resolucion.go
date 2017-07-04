@@ -6,6 +6,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+	//"fmt"
 
 	"github.com/astaxie/beego"
 )
@@ -22,6 +23,23 @@ func (c *ResolucionController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
+	c.Mapping("CancelarResolucion", c.CancelarResolucion)
+}
+
+func (c *ResolucionController) CancelarResolucion() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	v := models.Resolucion{Id: id}
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := models.CancelarResolucion(&v); err == nil {
+			c.Data["json"] = "Ok"
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
+	c.ServeJSON()
 }
 
 // Post ...

@@ -27,9 +27,9 @@ func (c *ContratoGeneralController) URLMapping() {
 }
 
 func (c *ContratoGeneralController) InsertarContratos() {
-	var v []models.ContratoGeneral
+	var v []models.ContratoVinculacion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.AddConjuntoContratos(v); err == nil {
+		if err := models.AddContratosVinculcionEspecial(v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {

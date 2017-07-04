@@ -34,6 +34,22 @@ func init() {
 	orm.RegisterModel(new(VinculacionDocente))
 }
 
+func AddConjuntoVinculaciones(m []VinculacionDocente)(err error){
+	o := orm.NewOrm()
+	o.Begin()
+	for _, vinculacion := range m {
+		vinculacion.Estado=true
+		vinculacion.FechaRegistro=time.Now()
+	    _, err = o.Insert(&vinculacion)
+	    if (err != nil){
+	    	o.Rollback()
+	    	return
+	    }
+	}
+	o.Commit()
+	return
+}
+
 // AddVinculacionDocente insert a new VinculacionDocente into database and returns
 // last inserted Id on success.
 func AddVinculacionDocente(m *VinculacionDocente) (id int64, err error) {
@@ -137,6 +153,7 @@ func UpdateVinculacionDocenteById(m *VinculacionDocente) (err error) {
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
+		m.FechaRegistro=v.FechaRegistro
 		if num, err = o.Update(m); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}

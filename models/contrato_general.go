@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"strings"
 	"time"
+	"strconv"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -55,6 +56,11 @@ type ContratoGeneral struct {
 	Id                           int                 `orm:"column(numero_contrato);pk;auto"`
 }
 
+type ContratoVinculacion struct {
+	ContratoGeneral 			ContratoGeneral
+	VinculacionDocente			VinculacionDocente
+}
+
 func (t *ContratoGeneral) TableName() string {
 	return "contrato_general"
 }
@@ -63,15 +69,88 @@ func init() {
 	orm.RegisterModel(new(ContratoGeneral))
 }
 
-func AddConjuntoContratos(m []ContratoGeneral)(err error){
+func AddContratosVinculcionEspecial(m []ContratoVinculacion)(err error){
 	o := orm.NewOrm()
 	o.Begin()
-	for _, contrato := range m {
-	    _, err = o.Insert(&contrato)
-	    if (err != nil){
-	    	o.Rollback()
-	    	return
-	    }
+	for _, vinculacion := range m {
+		v:=vinculacion.VinculacionDocente
+		if err = o.Read(&v); err == nil {
+			if(v.NumeroContrato==nil && v.Vigencia==nil){
+				contrato := vinculacion.ContratoGeneral
+				aux1:=181
+				contrato.Vigencia, _, _=time.Now().Date()
+			    contrato.FormaPago=&Parametros{Id:240}
+			    contrato.DescripcionFormaPago="Abono a Cuenta Mensual de acuerdo a puntas y hotras laboradas"
+			    contrato.Justificacion="Docente de Vinculacion Especial"
+			    contrato.UnidadEjecucion=&Parametros{Id:205}
+			    contrato.LugarEjecucion=&LugarEjecucion{Id:2}
+			    contrato.TipoControl=&aux1
+			    contrato.ClaseContratista=33
+			    contrato.TipoMoneda=137
+			    contrato.OrigenRecursos=149
+			    contrato.OrigenPresupueso=156
+			    contrato.TemaGastoInversion=166
+			    contrato.TipoGasto=146
+			    contrato.RegimenContratacion=136
+			    contrato.Procedimiento=132
+			    contrato.ModalidadSeleccion=123
+			    contrato.TipoCompromiso=35
+			    contrato.TipologiaContrato=46
+			    contrato.FechaRegistro=time.Now()
+			    contrato.UnidadEjecutora=&UnidadEjecutora{Id:1}
+			    contrato.Condiciones="Sin condiciones"
+			    _, err = o.Insert(&contrato)
+			    if (err == nil){
+			    	aux1 := strconv.Itoa(contrato.Id)
+			    	aux2 := contrato.Vigencia
+			    	e:=ContratoEstado{}
+			    	e.NumeroContrato = aux1
+			    	e.Vigencia = aux2
+			    	e.FechaRegistro=time.Now()
+			    	e.Estado=1
+			    	_, err = o.Insert(&e)
+			    	if (err == nil){
+				    	a := vinculacion.VinculacionDocente
+						if err = o.Read(&a); err == nil {
+							v := a
+							v.NumeroContrato = &aux1
+							v.Vigencia = &aux2
+							_, err = o.Update(&v)
+							if(err != nil){
+								o.Rollback()
+								return
+							}
+						}else{
+							o.Rollback()
+							return
+						}
+					}else{
+						o.Rollback()
+						return
+					}
+			    }else{
+			    	fmt.Println(err.Error())
+			    	o.Rollback()
+			    	return
+			    }
+			}else{
+				aux1 := *v.NumeroContrato
+				aux2 := *v.Vigencia
+				e:=ContratoEstado{}
+				e.NumeroContrato = aux1
+				e.Vigencia = aux2
+				e.FechaRegistro=time.Now()
+				e.Estado=1
+				_, err = o.Insert(&e)
+				if (err != nil){
+					o.Rollback()
+					return
+				}
+			}
+		}else{
+			o.Rollback()
+			return
+		}
 	}
 	o.Commit()
 	return
