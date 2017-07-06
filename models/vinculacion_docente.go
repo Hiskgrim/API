@@ -16,11 +16,11 @@ type VinculacionDocente struct {
 	IdProyectoCurricular int16                      `orm:"column(id_proyecto_curricular)"`
 	IdDedicacion         *Dedicacion                `orm:"column(id_dedicacion);rel(fk)"`
 	IdResolucion         *Resolucion                `orm:"column(id_resolucion);rel(fk)"`
-	IdSalarioMinimo      *int                        `orm:"column(id_salario_minimo);null"`
-	IdPuntoSalarial      *PuntoSalarial             `orm:"column(id_punto_salarial);rel(fk);null"`
+	IdSalarioMinimo      *int                       `orm:"column(id_salario_minimo);null"`
+	IdPuntoSalarial      *int             			`orm:"column(id_punto_salarial);null"`
 	NumeroSemanas        int                        `orm:"column(numero_semanas)"`
 	NumeroHorasSemanales int                        `orm:"column(numero_horas_semanales)"`
-	IdPersona            *InformacionPersonaNatural `orm:"column(id_persona);rel(fk)"`
+	IdPersona            int 						 `orm:"column(id_persona)"`
 	Vigencia             *int                        `orm:"column(vigencia);null"`
 	NumeroContrato       *string                     `orm:"column(numero_contrato);null"`
 	Id                   int                        `orm:"column(id);pk;auto"`
@@ -76,7 +76,7 @@ func GetVinculacionDocenteById(id int) (v *VinculacionDocente, err error) {
 func GetAllVinculacionDocente(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(VinculacionDocente))
+	qs := o.QueryTable(new(VinculacionDocente)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
