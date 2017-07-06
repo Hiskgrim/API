@@ -1,4 +1,4 @@
-ppackage models
+package models
 
 import (
 	"errors"
