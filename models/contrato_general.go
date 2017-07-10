@@ -12,19 +12,19 @@ import (
 )
 
 type ContratoGeneral struct {
-	Actividades                  *string              `orm:"column(actividades);null"`
+	Actividades                  string              `orm:"column(actividades);null"`
 	LugarEjecucion               *LugarEjecucion     `orm:"column(lugar_ejecucion);rel(fk)"`
 	TipoContrato                 *TipoContrato       `orm:"column(tipo_contrato);rel(fk)"`
-	ResgistroPresupuestal        *int                 `orm:"column(resgistro_presupuestal);null"`
-	Estado                       *bool                `orm:"column(estado);null"`
-	NumeroConstancia             *int                 `orm:"column(numero_constancia);null"`
-	Convenio                     *string              `orm:"column(convenio);null"`
+	ResgistroPresupuestal        int                 `orm:"column(resgistro_presupuestal);null"`
+	Estado                       bool                `orm:"column(estado);null"`
+	NumeroConstancia             int                 `orm:"column(numero_constancia);null"`
+	Convenio                     string              `orm:"column(convenio);null"`
 	ClaseContratista             int                 `orm:"column(clase_contratista)"`
 	Supervisor                   *SupervisorContrato `orm:"column(supervisor);rel(fk);null"`
-	Observaciones                *string              `orm:"column(observaciones);null"`
-	TipoControl                  *int                 `orm:"column(tipo_control);null"`
-	ValorTasaCambio              *float64             `orm:"column(valor_tasa_cambio);null"`
-	ValorContratoMe              *float64             `orm:"column(valor_contrato_me);null"`
+	Observaciones                string              `orm:"column(observaciones);null"`
+	TipoControl                  int                 `orm:"column(tipo_control);null"`
+	ValorTasaCambio              float64             `orm:"column(valor_tasa_cambio);null"`
+	ValorContratoMe              float64             `orm:"column(valor_contrato_me);null"`
 	TipoMoneda                   int                 `orm:"column(tipo_moneda)"`
 	OrigenRecursos               int                 `orm:"column(origen_recursos)"`
 	OrigenPresupueso             int                 `orm:"column(origen_presupueso)"`
@@ -47,7 +47,7 @@ type ContratoGeneral struct {
 	NumeroSolicitudNecesidad     int                 `orm:"column(numero_solicitud_necesidad)"`
 	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
 	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
-	ClausulaRegistroPresupuestal *bool                `orm:"column(clausula_registro_presupuestal);null"`
+	ClausulaRegistroPresupuestal bool                `orm:"column(clausula_registro_presupuestal);null"`
 	OrdenadorGasto               string              `orm:"column(ordenador_gasto);null"`
 	FormaPago                    *Parametros         `orm:"column(forma_pago);rel(fk)"`
 	PlazoEjecucion               int                 `orm:"column(plazo_ejecucion)"`
@@ -84,7 +84,7 @@ func AddContratosVinculcionEspecial(m []ContratoVinculacion)(err error){
 			    contrato.Justificacion="Docente de Vinculacion Especial"
 			    contrato.UnidadEjecucion=&Parametros{Id:205}
 			    contrato.LugarEjecucion=&LugarEjecucion{Id:2}
-			    contrato.TipoControl=&aux1
+			    contrato.TipoControl=aux1
 			    contrato.ClaseContratista=33
 			    contrato.TipoMoneda=137
 			    contrato.OrigenRecursos=149

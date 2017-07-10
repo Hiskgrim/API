@@ -37,8 +37,11 @@ func GetOrdenadorGastoById(idFacultad string) (v *OrdenadorGasto, err error) {
 	if err1 == nil {
 		fmt.Println("Consulta exitosa")
 	}
-
-	return temp[0], err1
+	if(len(temp)>0){
+		return temp[0], err1
+	}else{
+		return nil, err1
+	}
 }
 
 // GetAllOrdenadorGasto retrieves all OrdenadorGasto matches certain condition. Returns empty list if

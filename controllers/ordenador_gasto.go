@@ -55,7 +55,7 @@ func (c *OrdenadorGastoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	v, err := models.GetOrdenadorGastoById(idStr)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = nil
 	} else {
 		c.Data["json"] = v
 	}
